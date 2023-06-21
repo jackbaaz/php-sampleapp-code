@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ash
+  name: php-app
+spec:
+  selector:
+    matchLabels:
+      app: php-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: php-app
+    spec:
+      containers:
+        - image: 653470767467.dkr.ecr.eu-west-1.amazonaws.com/ash-repo:latest
+          imagePullPolicy: Always
+          name: php-app-container
+          ports:
+            - containerPort: 80
